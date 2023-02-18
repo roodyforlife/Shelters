@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="request" style="text-align: center; border: 1px solid #555; border-radius: 5px; padding: 20px;">
+    <div>
+        <a asp-action="Request" asp-controller="Home" asp-route-title="Сумма пожертвування за кожен місяць для кожного притулку"
+           asp-route-request="SELECT Year(Date) as year, MONTH(Date) as month, Shelters.Name as shelter_name, SUM(Amount) as total_donation
+FROM Shelters
+LEFT JOIN Donations on Donations.ShelterId = Shelters.Id
+GROUP BY Shelters.Name, MONTH(Date), YEAR(Date);" class="defaultButton mb">Сумма пожертвування за кожен місяць для кожного притулку</a>
+    </div>
+    <div>
+        <a asp-action="Request" asp-controller="Home" asp-route-title="Обчислення кількості волонтерів для кожного притулку"
+           asp-route-request="SELECT Shelters.Name, COUNT(Volunteers.Id) as volunteer_count
+FROM Shelters
+LEFT JOIN ShelterVolunteers ON Shelters.Id = ShelterVolunteers.ShelterId
+LEFT JOIN Volunteers ON Volunteers.Id = ShelterVolunteers.VolunteerId
+GROUP BY Shelters.Name;" class="defaultButton mb">Обчислення кількості волонтерів для кожного притулку</a>
+    </div>
+    <div>
+        <a asp-action="Request" asp-controller="Home" asp-route-title="Виведення всіх притулків з кількісттю тварин та середеній вік тварин у даному притулку"
+           asp-route-request="SELECT Shelters.Name as shelter_name, COUNT(*) as animal_count, CAST(AVG(CAST(Animals.Age as FLOAT)) as FLOAT) as average_age
+FROM Animals
+LEFT JOIN Shelters ON Shelters.Id = Animals.ShelterId
+GROUP BY Shelters.Name" class="defaultButton mb">Виведення всіх притулків з кількісттю тварин та середеній вік тварин у даному притулку</a>
+    </div>
+    <div>
+        <a asp-action="Request" asp-controller="Home" asp-route-title="Знайти кількість тварин, які утримуються у кожного власника."
+           asp-route-request="SELECT o.FirstName, o.LastName, o.Email, COUNT(a.Id) as animals_count
+FROM Owners o
+LEFT JOIN Animals a on a.OwnerId = o.Id
+GROUP BY o.FirstName, o.LastName, o.Email" class="defaultButton">Знайти кількість тварин, які утримуються у кожного власника.</a>
+    </div>
+</div>

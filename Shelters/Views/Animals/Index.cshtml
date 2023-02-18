@@ -1,0 +1,139 @@
+﻿@model IEnumerable<Shelters.Models.Animal>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Animals</h1>
+
+<a asp-action="Create" class="defaultButton mb">Create new</a>
+
+<div class="filtration">
+    <form asp-action="Index">
+        <div class="filtration__content">
+            <div class="filtration__row">
+                <div class="filtration__cell">
+                    <span>Name</span>
+                    <input name="name" type="text" value="@ViewBag.Name">
+                </div>
+                <div class="filtration__cell">
+                    <span>Species</span>
+                    <input name="species" type="text" value="@ViewBag.Species">
+                </div>
+                <div class="filtration__cell">
+                    <span>Gender</span>
+                    <input name="gender" type="text" value="@ViewBag.Gender">
+                </div>
+            </div>
+            <div class="filtration__row">
+                <div class="filtration__cell">
+                    <span>Age from</span>
+                    <input name="ageFrom" type="number" value="@ViewBag.AgeFrom">
+                </div>
+                <div class="filtration__cell">
+                    <span>Age to</span>
+                    <input name="ageTo" type="number" value="@ViewBag.AgeTo">
+                </div>
+                <div class="filtration__cell">
+                    <span>Shelter name</span>
+                    <input name="shelter" type="text" value="@ViewBag.Shelter">
+                </div>
+            </div>
+            <div class="filtration__row">
+                <div class="filtration__cell">
+                    <span>Owner</span>
+                    <select name="owner" asp-items="@ViewBag.Owner"></select>
+                </div>
+                <div class="filtration__cell">
+                    <span>Sorting</span>
+                    <select name="sort" asp-items="@ViewBag.Sort"></select>
+                </div>
+            </div>
+            <div class="filtration__row">
+                <button class="defaultButton">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<button onclick="printReport('Animals')" class="defaultButton mb">Print animals</button>
+<a asp-action="Automation" asp-controller="Home" class="defaultButton mb">Automation</a>
+
+<div id="print">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Species)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Shelter)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Owner)
+                </th>
+                <th class="blocked"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Species)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Shelter.Name)
+                    </td>
+                    @if (item.OwnerId is not null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Owner.Email)
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            No owner
+                        </td>
+                    }
+                    <td class="blocked">
+                        <div class="info">
+                            <span id="setting--button" onclick="InfoMenu(event)">Settings</span>
+                            <div class="info__menu">
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

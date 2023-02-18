@@ -1,0 +1,48 @@
+﻿@model Shelters.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Volunteer</h4>
+
+<div class="form">
+    <form asp-action="Create">
+        <div class="form__content">
+            <div class="form__item">
+                <label asp-for="Name"></label>
+                <input asp-for="Name">
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Email"></label>
+                <input asp-for="Email">
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone">
+                <span asp-validation-for="Phone"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Birthdate"></label>
+                <input asp-for="Birthdate">
+                <span asp-validation-for="Birthdate"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Skills"></label>
+                <input asp-for="Skills">
+                <span asp-validation-for="Skills"></span>
+            </div>
+            <div class="form__item">
+                <input class="defaultButton" type="submit" value="Create">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,103 @@
+﻿@model Shelters.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+    <h4>Volunteer</h4>
+
+<div class="details">
+    <div class="details__content">
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Email)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Email)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Phone)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Phone)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Birthdate)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Birthdate)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Skills)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Skills)
+            </div>
+        </div>
+    </div>
+    </div>
+
+<a asp-action="Index" class="defaultButton">Back</a>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="defaultButton">Edit</a>
+
+<h4>Shelters</h4>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ShelterVolunteers.First().Shelter.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShelterVolunteers.First().Shelter.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShelterVolunteers.First().Shelter.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShelterVolunteers.First().Shelter.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShelterVolunteers.First().Shelter.Website)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ShelterVolunteers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shelter.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shelter.Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shelter.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shelter.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shelter.Website)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,138 @@
+﻿@model Shelters.Models.Shelter
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+    <h4>Shelter</h4>
+
+<div class="details">
+    <div class="details__content">
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Address)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Address)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.City)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.City)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Phone)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Phone)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Website)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Website)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Animals)
+            </div>
+            <div class="details__cell">
+                @Model.Animals.Count()
+            </div>
+        </div>
+    </div>
+    </div>
+
+<a asp-action="Index" class="defaultButton">Back</a>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="defaultButton">Edit</a>
+
+<h4>Volunteers</h4>
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ShelterVolunteers.First().Volunteer.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShelterVolunteers.First().Volunteer.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShelterVolunteers.First().Volunteer.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShelterVolunteers.First().Volunteer.Birthdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShelterVolunteers.First().Volunteer.Skills)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ShelterVolunteers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Volunteer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Volunteer.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Volunteer.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Volunteer.Birthdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Volunteer.Skills)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>WishLists</h4>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WishLists.First().Items)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WishLists.First().CreateDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.WishLists)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Items)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

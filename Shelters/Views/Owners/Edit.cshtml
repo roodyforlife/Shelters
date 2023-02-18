@@ -1,0 +1,54 @@
+﻿@model Shelters.Models.Owner
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Owner</h4>
+
+<div class="form">
+    <form asp-action="Edit">
+        <div class="form__content">
+            <input type="hidden" asp-for="Id" />
+            <div class="form__item">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName">
+                <span asp-validation-for="FirstName"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName">
+                <span asp-validation-for="LastName"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Age"></label>
+                <input asp-for="Age">
+                <span asp-validation-for="Age"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Email"></label>
+                <input asp-for="Email">
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone">
+                <span asp-validation-for="Phone"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Description"></label>
+                <input asp-for="Description">
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div class="form__item">
+                <input class="defaultButton" type="submit" value="Save">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

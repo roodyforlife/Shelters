@@ -1,0 +1,138 @@
+body {
+    background: #333;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+header {
+    background: #333;
+    padding: 20px 0;
+    border-bottom: 1px solid #555;
+}
+
+.header__content {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.header__content--menu {
+    display: flex;
+    align-items: center;
+}
+
+.header__content--menu nav:not(:last-child){
+    margin-right: 20px;
+}
+
+.header__content--menu nav:first-child a{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.header__content--menu nav a{
+    color: white;
+    font-size: 20px;
+}
+
+.header__content--menu nav:hover{
+    opacity: 0.8;
+}
+
+.content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: white;
+    margin: 20px 0;
+}
+
+.defaultButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: white;
+    color: #333;
+    font-size: 18px;
+}
+
+.ml {
+    margin-left: 20px;
+}
+.mr {
+    margin-right: 20px;
+}
+.mt {
+    margin-top: 20px;
+}
+.mb {
+    margin-bottom: 20px;
+}
+
+.defaultButton:hover{
+    opacity: 0.8;
+}
+
+.filtration {
+}
+.filtration__content {
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px 0;
+}
+.filtration__row {
+    display: flex;
+    align-items: center;
+}
+
+.filtration__row:not(:last-child){
+    margin-bottom: 20px;
+}
+
+.filtration__cell {
+    width: 100%;
+    height: 40px;
+    display: flex;
+}
+.filtration__cell:not(:last-child){
+    margin-right: 20px;
+}
+
+
+    .filtration__cell span {
+        height: 100%;
+        background: #555;
+        border-radius: 5px 0 0 5px;
+        padding: 0 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid black;
+        color: white;
+    }
+
+    .filtration__cell input,
+    .filtration__cell select {
+        height: 100%;
+        background: #555;
+        color: white;
+        border-radius: 0 5px 5px 0;
+        padding: 0 10px;
+        margin: 0;
+        font-size: 18px;
+        width: 100%;
+    }
+
+@media(max-width: 1280px) {
+    .content,
+    .header__content {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

@@ -1,0 +1,48 @@
+﻿@model Shelters.Models.Shelter
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Shelter</h4>
+
+<div class="form">
+    <form asp-action="Create">
+        <div class="form__content">
+            <div class="form__item">
+                <label asp-for="Name"></label>
+                <input asp-for="Name">
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Address"></label>
+                <input asp-for="Address">
+                <span asp-validation-for="Address"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="City"></label>
+                <input asp-for="City">
+                <span asp-validation-for="City"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone">
+                <span asp-validation-for="Phone"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Website"></label>
+                <input asp-for="Website">
+                <span asp-validation-for="Website"></span>
+            </div>
+            <div class="form__item">
+                <input class="defaultButton" type="submit" value="Create">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

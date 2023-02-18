@@ -1,0 +1,40 @@
+﻿@model Shelters.RequestViewModel
+
+@{
+    ViewData["Title"] = "Request";
+}
+
+<h1>Request: @ViewBag.RequestTitle</h1>
+
+<table>
+    <thead>
+        <tr>
+            @foreach (var item in Model.Displays)
+            {
+                <th>
+                    @item
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var listItem in Model.Result)
+        {
+            <tr>
+                @foreach (var item in listItem)
+                {
+                <td>
+                    @if (!String.IsNullOrEmpty(item))
+                    {
+                        @item
+                    }
+                    else
+                    {
+                        <span style="color: red;">Null</span>
+                    }
+                </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

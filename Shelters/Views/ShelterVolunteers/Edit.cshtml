@@ -1,0 +1,34 @@
+﻿@model Shelters.Models.ShelterVolunteer
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ShelterVolunteer</h4>
+
+<div class="form">
+    <form asp-action="Edit">
+        <div class="form__content">
+            <input type="hidden" asp-for="Id" />
+            <div class="form__item">
+                <label asp-for="Shelter"></label>
+                <select asp-for="ShelterId" asp-items="ViewBag.ShelterId"></select>
+                <span asp-validation-for="ShelterId"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Volunteer"></label>
+                <select asp-for="VolunteerId" asp-items="ViewBag.VolunteerId"></select>
+                <span asp-validation-for="VolunteerId"></span>
+            </div>
+            <div class="form__item">
+                <input class="defaultButton" type="submit" value="Save">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

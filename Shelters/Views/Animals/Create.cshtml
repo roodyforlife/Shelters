@@ -1,0 +1,56 @@
+﻿@model Shelters.Models.Animal
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Animal</h4>
+
+<div class="form">
+    <form asp-action="Create">
+        <div class="form__content">
+            <div class="form__item">
+                <label asp-for="Name"></label>
+                <input asp-for="Name">
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Species"></label>
+                <input asp-for="Species">
+                <span asp-validation-for="Species"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Gender"></label>
+                <input asp-for="Gender">
+                <span asp-validation-for="Gender"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Age"></label>
+                <input asp-for="Age">
+                <span asp-validation-for="Age"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Description"></label>
+                <input asp-for="Description">
+                <span asp-validation-for="Description"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="ShelterId"></label>
+                <select asp-for="ShelterId" asp-items="ViewBag.ShelterId"></select>
+            </div>
+            <div class="form__item">
+                <label asp-for="Owner"></label>
+                <select asp-for="OwnerId" asp-items="ViewBag.OwnerId"></select>
+            </div>
+            <div class="form__item">
+                <input class="defaultButton" type="submit" value="Create">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

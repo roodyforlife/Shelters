@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/css/nullStyle.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/table.css" rel="stylesheet" />
+    <link href="~/css/details.css" rel="stylesheet" />
+    <link href="~/css/form.css" rel="stylesheet" />
+    <title>Shelters</title>
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="~/js/script.js"></script>
+    <script src="~/js/site.js"></script>
+    <div class="container">
+        <header>
+            <div class="header__content">
+                <div class="header__content--menu">
+                    <nav><a asp-action="Index" asp-controller="Home">Home</a></nav>
+                    <nav><a asp-action="Index" asp-controller="Owners">Owners</a></nav>
+                    <nav><a asp-action="Index" asp-controller="Animals">Animals</a></nav>
+                    <nav><a asp-action="Index" asp-controller="Donations">Donations</a></nav>
+                    <nav><a asp-action="Index" asp-controller="Shelters">Shelters</a></nav>
+                    <nav><a asp-action="Index" asp-controller="ShelterVolunteers">ShelterVolunteers</a></nav>
+                    <nav><a asp-action="Index" asp-controller="Volunteers">Volunteers</a></nav>
+                    <nav><a asp-action="Index" asp-controller="WishLists">WishLists</a></nav>
+                </div>
+            </div>
+        </header>
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

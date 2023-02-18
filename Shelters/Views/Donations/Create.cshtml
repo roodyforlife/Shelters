@@ -1,0 +1,52 @@
+﻿@model Shelters.Models.Donation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Donation</h4>
+
+<div class="form">
+    <form asp-action="Create">
+        <div class="form__content">
+            <div class="form__item">
+                <label asp-for="DonorName"></label>
+                <input asp-for="DonorName">
+                <span asp-validation-for="DonorName"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="DonorSurname"></label>
+                <input asp-for="DonorSurname">
+                <span asp-validation-for="DonorSurname"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Amount"></label>
+                <input asp-for="Amount">
+                <span asp-validation-for="Amount"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Date"></label>
+                <input asp-for="Date">
+                <span asp-validation-for="Date"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Comment"></label>
+                <input asp-for="Comment">
+                <span asp-validation-for="Comment"></span>
+            </div>
+            <div class="form__item">
+                <label asp-for="Shelter"></label>
+                <select asp-for="ShelterId" asp-items="ViewBag.ShelterId"></select>
+            </div>
+            <div class="form__item">
+                <input class="defaultButton" type="submit" value="Create">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,22 @@
+.details {
+    margin: 20px 0;
+}
+.details__content {
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 20px;
+    display: table;
+    color: white;
+}
+.details__row {
+    display: table-row;
+}
+.details__row:not(:last-child) .details__cell{
+    padding-bottom: 20px;
+}
+.details__cell {
+    display: table-cell;
+}
+.details__cell:first-child{
+    min-width: 100px;
+}

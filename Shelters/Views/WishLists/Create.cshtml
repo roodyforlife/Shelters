@@ -1,0 +1,32 @@
+﻿@model Shelters.Models.WishList
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>WishList</h4>
+
+<div class="form">
+    <form asp-action="Create">
+        <div class="form__content">
+            <div class="form__item">
+                <label asp-for="Shelter"></label>
+                <select asp-for="ShelterId" asp-items="ViewBag.ShelterId"></select>
+            </div>
+            <div class="form__item">
+                <label asp-for="Items"></label>
+                <input asp-for="Items">
+                <span asp-validation-for="Items"></span>
+            </div>
+            <div class="form__item">
+                <input class="defaultButton" type="submit" value="Create">
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

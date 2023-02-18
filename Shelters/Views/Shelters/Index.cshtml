@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Shelters.Models.Shelter>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Shelters</h1>
+
+<a asp-action="Create" class="defaultButton mb">Create new</a>
+
+<div class="filtration">
+    <form asp-action="Index">
+        <div class="filtration__content">
+            <div class="filtration__row">
+                <div class="filtration__cell">
+                    <span>Name</span>
+                    <input name="name" type="text" value="@ViewBag.Name">
+                </div>
+                <div class="filtration__cell">
+                    <span>Address</span>
+                    <input name="address" type="text" value="@ViewBag.Address">
+                </div>
+                <div class="filtration__cell">
+                    <span>City</span>
+                    <input name="city" type="text" value="@ViewBag.City">
+                </div>
+            </div>
+            <div class="filtration__row">
+                <div class="filtration__cell">
+                    <span>Phone</span>
+                    <input name="phone" type="text" value="@ViewBag.Phone">
+                </div>
+                <div class="filtration__cell">
+                    <span>Website</span>
+                    <input name="site" type="text" value="@ViewBag.Site">
+                </div>
+            </div>
+            <div class="filtration__row">
+                <div class="filtration__cell">
+                    <span>Animal count from</span>
+                    <input name="countFrom" type="number" value="@ViewBag.CountFrom">
+                </div>
+                <div class="filtration__cell">
+                    <span>Animal count to</span>
+                    <input name="countTo" type="number" value="@ViewBag.CountTo">
+                </div>
+                <div class="filtration__cell">
+                    <span>Sorting</span>
+                    <select name="sort" asp-items="@ViewBag.Sort"></select>
+                </div>
+            </div>
+            <div class="filtration__row">
+                <button class="defaultButton">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Website)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Animals)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+            <td>
+                @item.Animals.Count()
+            </td>
+            <td>
+                <div class="info">
+                    <span id="setting--button" onclick="InfoMenu(event)">Settings</span>
+                    <div class="info__menu">
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

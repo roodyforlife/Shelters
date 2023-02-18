@@ -1,0 +1,65 @@
+﻿@model Shelters.Models.Donation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+    <h4>Donation</h4>
+
+<div class="details">
+    <div class="details__content">
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.DonorName)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.DonorName)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.DonorSurname)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.DonorSurname)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Amount)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Amount)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Date)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Date)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Comment)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Comment)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Shelter)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Shelter.Name)
+            </div>
+        </div>
+    </div>
+    </div>
+
+<a asp-action="Index" class="defaultButton">Back</a>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="defaultButton">Edit</a>

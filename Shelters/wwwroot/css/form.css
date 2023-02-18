@@ -1,0 +1,40 @@
+.form {
+}
+
+.form__content {
+    border: 1px solid #555;
+    border-radius: 5px;
+    padding: 30px;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.form__item:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.form__item {
+    display: flex;
+    flex-direction: column;
+}
+
+    .form__item span:last-child {
+        color: red;
+    }
+
+    .form__item span,
+    .form__item label {
+        color: white;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+    .form__item input:not([type="submit"]),
+    .form__item select {
+        height: 30px;
+        min-width: 300px;
+        background: #555;
+        border-radius: 5px;
+        padding: 0 10px;
+        font-size: 18px;
+        color: white;
+    }

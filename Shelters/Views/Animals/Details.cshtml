@@ -1,0 +1,81 @@
+﻿@model Shelters.Models.Animal
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+    <h4>Animal</h4>
+<div class="details">
+    <div class="details__content">
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Species)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Species)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Gender)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Gender)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Age)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Age)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Description)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Description)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Shelter)
+            </div>
+            <div class="details__cell">
+                @Html.DisplayFor(model => model.Shelter.Name)
+            </div>
+        </div>
+        <div class="details__row">
+            <div class="details__cell">
+                @Html.DisplayNameFor(model => model.Owner)
+            </div>
+            @if (Model.OwnerId is not null)
+            {
+                <div class="details__cell">
+                    @Html.DisplayFor(model => model.Owner.Email)
+                </div>
+            }
+            else
+            {
+                <div class="details__cell">
+                    No owner
+                </div>
+            }
+        </div>
+    </div>
+    </div>
+
+<a asp-action="Index" class="defaultButton">Back</a>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="defaultButton">Edit</a>

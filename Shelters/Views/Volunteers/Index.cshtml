@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Shelters.Models.Volunteer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Volunteers</h1>
+
+<a asp-action="Create" class="defaultButton mb">Create new</a>
+
+<div class="filtration">
+    <form asp-action="Index">
+        <div class="filtration__content">
+            <div class="filtration__row">
+                <div class="filtration__cell">
+                    <span>Name</span>
+                    <input name="name" type="text" value="@ViewBag.Name">
+                </div>
+                <div class="filtration__cell">
+                    <span>Email</span>
+                    <input name="email" type="text" value="@ViewBag.Email">
+                </div>
+                <div class="filtration__cell">
+                    <span>Phone</span>
+                    <input name="phone" type="text" value="@ViewBag.Phone">
+                </div>
+            </div>
+            <div class="filtration__row">
+                <div class="filtration__cell">
+                    <span>Birthdate from</span>
+                    <input name="dateFrom" type="date" value="@ViewBag.DateFrom.ToString("yyyy-MM-dd")">
+                </div>
+                <div class="filtration__cell">
+                    <span>Birthdate to</span>
+                    <input name="dateTo" type="date" value="@ViewBag.DateTo.ToString("yyyy-MM-dd")">
+                </div>
+                <div class="filtration__cell">
+                    <span>Shelter name</span>
+                    <input name="shelter" type="text" value="@ViewBag.Shelter">
+                </div>
+            </div>
+            <div class="filtration__row">
+                <div class="filtration__cell">
+                    <span>Sorting</span>
+                    <select name="sort" asp-items="@ViewBag.Sort"></select>
+                </div>
+            </div>
+            <div class="filtration__row">
+                <button class="defaultButton">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<button onclick="printReport('Volunteers')" class="defaultButton mb">Print volunteers</button>
+
+<div id="print">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Birthdate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Skills)
+                </th>
+                <th>
+                    Shelters
+                </th>
+                <th class="blocked"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birthdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Skills)
+                    </td>
+                    <td>
+                        @foreach (ShelterVolunteer shelter in item.ShelterVolunteers)
+                        {
+                            <p>| @shelter.Shelter.Name |</p>
+                        }
+                    </td>
+                    <td class="blocked">
+                        <div class="info">
+                            <span id="setting--button" onclick="InfoMenu(event)">Settings</span>
+                            <div class="info__menu">
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
