@@ -164,7 +164,7 @@ namespace Shelters.Controllers
             if (await _context.Animals.FirstOrDefaultAsync(x => x.Name == animal.Name
                 && x.ShelterId != animal.ShelterId) is not null)
             {
-                ModelState.AddModelError("Name", "The name is already in the database ");
+                ModelState.AddModelError("Name", "The name is already in the database");
             }
 
             if (ModelState.IsValid)
@@ -173,6 +173,7 @@ namespace Shelters.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["ShelterId"] = new SelectList(_context.Shelters, "Id", "Name", animal.ShelterId);
             List<SelectListItem> owners = new List<SelectListItem>();
             owners.Add(new SelectListItem("No owner", null));

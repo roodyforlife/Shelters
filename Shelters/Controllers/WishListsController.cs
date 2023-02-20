@@ -99,7 +99,7 @@ namespace Shelters.Controllers
                 return NotFound();
             }
 
-            wishList.CreateDate = _context.WishLists.FirstOrDefault(x => x.Id == id).CreateDate;
+            wishList.CreateDate = _context.WishLists.AsNoTracking().FirstOrDefault(x => x.Id == id).CreateDate;
 
             if (ModelState.IsValid)
             {
